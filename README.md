@@ -132,18 +132,17 @@ export default {
 
 ## Props 配置
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 |
-| --- | --- | --- | --- | --- |
-| data | 用于列表渲染的数据 | Array | - | [] |
-| direction | 滚动方向 | String | 'vertical', 'horizontal' | 'vertical' |
-| options | better-scroll 配置项，具体请参考[BS 官方文档](https://ustbhuangyi.github.io/better-scroll/doc/zh-hans/options.html) | Object | {
-  observeDOM: true,
-  click: true,
-  probeType: 1,
-  scrollbar: false,
-  pullDownRefresh: false,
-  pullUpLoad: false
-  } |
+| 参数      | 说明                                                                                                                | 类型   | 可选值                   | 默认值              |
+| --------- | ------------------------------------------------------------------------------------------------------------------- | ------ | ------------------------ | ------------------- |
+| data      | 用于列表渲染的数据                                                                                                  | Array  | -                        | []                  |
+| direction | 滚动方向                                                                                                            | String | 'vertical', 'horizontal' | 'vertical'          |
+| options   | better-scroll 配置项，具体请参考[BS 官方文档](https://ustbhuangyi.github.io/better-scroll/doc/zh-hans/options.html) | Object | -                        | { observeDOM: true,
+click: true,
+probeType: 1,
+scrollbar: false,
+pullDownRefresh: false,
+pullUpLoad: false
+} |
 | scrollEvents^1.9.0^ | 配置需要派发的 scroll 事件 | Array | 可包含子项：'scroll', 'before-scroll-start', 'scroll-end' | [] |
 | listenScroll | 是否派发 scroll 事件。`即将废弃`，推荐使用 `scroll-events` 属性 | Boolean | true/false | false |
 | listenBeforeScroll | 是否派发 before-scroll-start 事件。`即将废弃`，推荐使用 `scroll-events` 属性 | Boolean | true/false | false |
@@ -154,32 +153,32 @@ export default {
 
 *   `scrollbar` 子配置项
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 |
-| --- | --- | --- | --- | --- |
-| fade | 是否淡入淡出 | Boolean | true/false | false |
+| 参数 | 说明         | 类型    | 可选值     | 默认值 |
+| ---- | ------------ | ------- | ---------- | ------ |
+| fade | 是否淡入淡出 | Boolean | true/false | false  |
 
 *   `pullDownRefresh` 子配置项
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 |
-| --- | --- | --- | --- | --- |
-| threshold | 下拉刷新动作的下拉距离阈值 | Number | - | 90 |
-| stop | 回弹停留的位置 | Number | - | 组件会自动计算回弹时显示的元素高度作为默认值 |
-| stopTime | 刷新成功的文案显示时间 | Number | - | 600 |
-| txt | 刷新成功的文案 | String | - | 'Refresh success' |
+| 参数      | 说明                       | 类型   | 可选值 | 默认值                                       |
+| --------- | -------------------------- | ------ | ------ | -------------------------------------------- |
+| threshold | 下拉刷新动作的下拉距离阈值 | Number | -      | 90                                           |
+| stop      | 回弹停留的位置             | Number | -      | 组件会自动计算回弹时显示的元素高度作为默认值 |
+| stopTime  | 刷新成功的文案显示时间     | Number | -      | 600                                          |
+| txt       | 刷新成功的文案             | String | -      | 'Refresh success'                            |
 
 *   `pullUpLoad` 子配置项
 
-| 参数 | 说明 | 类型 | 可选值 | 默认值 |
-| --- | --- | --- | --- | --- |
-| threshold | 上拉刷新动作的上拉距离阈值 | Number | - | 0 |
-| txt | 上拉加载的相关文案 | Object | - | { more: '', noMore: '' } |
+| 参数      | 说明                       | 类型   | 可选值 | 默认值                   |
+| --------- | -------------------------- | ------ | ------ | ------------------------ |
+| threshold | 上拉刷新动作的上拉距离阈值 | Number | -      | 0                        |
+| txt       | 上拉加载的相关文案         | Object | -      | { more: '', noMore: '' } |
 
 ## 插槽
 
-| 名字 | 说明 | 作用域参数 |
-| --- | --- | --- |
-| default | 基于`data`属性渲染的列表 | - |
-| pulldown | 位于列表上方，会在下拉刷新时显示 | pullDownRefresh: 是否开启了下拉刷新功能
+| 名字     | 说明                             | 作用域参数                              |
+| -------- | -------------------------------- | --------------------------------------- |
+| default  | 基于`data`属性渲染的列表         | -                                       |
+| pulldown | 位于列表上方，会在下拉刷新时显示 | pullDownRefresh: 是否开启了下拉刷新功能 |
 pullDownStyle: 移入移出的样式
 beforePullDown: 是否正在做下拉操作
 isPullingDown: 是否正在拉取数据
@@ -189,20 +188,20 @@ isPullUpLoad: 是否正在加载数据 |
 
 ## 事件
 
-| 事件名 | 说明 | 参数 |
-| --- | --- | --- |
-| click | 点击列表项时触发 | item - 该列表项的数据 |
-| scroll | 当 `scroll-events` 包含 `scroll` 时，根据 probeType 的值决定派发时机 | Object {x, y} - 实时滚动位置的坐标 |
-| before-scroll-start | 当 `scroll-events` 包含 `before-scroll-start` 时，在滚动开始之前触发 | - |
-| scroll-end^1.9.0^ | 当 `scroll-events` 包含 `scroll-end` 时，在滚动结束时触发 | Object {x, y} - 实时滚动位置的坐标 |
-| pulling-down | 当 pullDownRefresh 属性为 true 时，在下拉超过阈值时触发 | - |
-| pulling-up | 当 pullUpLoad 属性为 true 时，在上拉超过阈值时触发 | - |
+| 事件名              | 说明                                                                 | 参数                               |
+| ------------------- | -------------------------------------------------------------------- | ---------------------------------- |
+| click               | 点击列表项时触发                                                     | item - 该列表项的数据              |
+| scroll              | 当 `scroll-events` 包含 `scroll` 时，根据 probeType 的值决定派发时机 | Object {x, y} - 实时滚动位置的坐标 |
+| before-scroll-start | 当 `scroll-events` 包含 `before-scroll-start` 时，在滚动开始之前触发 | -                                  |
+| scroll-end^1.9.0^   | 当 `scroll-events` 包含 `scroll-end` 时，在滚动结束时触发            | Object {x, y} - 实时滚动位置的坐标 |
+| pulling-down        | 当 pullDownRefresh 属性为 true 时，在下拉超过阈值时触发              | -                                  |
+| pulling-up          | 当 pullUpLoad 属性为 true 时，在上拉超过阈值时触发                   | -                                  |
 
 ## 方法
 
-| 方法名 | 说明 | 参数 |
-| --- | --- | --- |
-| scrollTo | 滚动到指定位置 | x: 横向位置
+| 方法名   | 说明           | 参数        |
+| -------- | -------------- | ----------- |
+| scrollTo | 滚动到指定位置 | x: 横向位置 |
 y: 纵向位置
 time: 过渡动画时间
 ease: 动画曲线 |
@@ -214,6 +213,6 @@ ease: 动画曲线 |
 
 ## 内部属性
 
-| 属性名 | 说明 |
-| --- | --- |
+| 属性名 | 说明                                                                                                                                                                                                                     |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | scroll | 可以通过该属性获得内部实现滚动核心的 BScoll 实例，从而获得更多 BScoll 的底层能力，如监听`touchEnd`事件，获得滚动中的中间状态等，具体可查看 [better-scroll 文档](http://ustbhuangyi.github.io/better-scroll/doc/zh-hans/) |
